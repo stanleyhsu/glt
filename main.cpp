@@ -15,14 +15,14 @@ void display(GLFWwindow *w, double currentTime) {
 }
 
 int main() {
-  if (!glfwInit()) {exit(EXIT_FAILURE);}
+  if (!glfwInit()) {return(-1);}
   
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   GLFWwindow * window = glfwCreateWindow(600, 600, "Hello OpenGL", NULL, NULL);
   glfwMakeContextCurrent(window);
 
-  if (glewInit()!=GLEW_OK){exit(EXIT_FAILURE);}
+  if (glewInit()!=GLEW_OK){return(-1);}
   glfwSwapInterval(1);
 
   init(window);
@@ -34,7 +34,5 @@ int main() {
   }
   glfwDestroyWindow(window);
   glfwTerminate();
-  exit(EXIT_SUCCESS);
-
-  return 0;
+  return(0);
 }
