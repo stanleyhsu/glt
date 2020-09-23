@@ -1,6 +1,13 @@
 cmake_minimum_required(VERSION 3.16)
-project(gltest C)
+project(gltest)
 
-set(CMAKE_C_STANDARD 11)
+find_package(GLEW REQUIRED)
+if (GLEW_FOUND)
+    include_directories($(GLEW_INCLUDE_DIRS))
+    link_libraries(${GLEW_LIBRARIES})
+endif()
 
-add_executable(gltest main.c)
+find_package(glfw3 3.3 REQUIRED)
+
+add_executable(gltest main.cpp)
+target_link_libraries(gltest GLEW::GLEW glfw )
